@@ -1,4 +1,4 @@
-module.exports = function (obj, iterator) {
+module.exports = function (obj, iterator, dropUnmapped) {
 	if (iterator === void 0)
 		throw new Error('iterator not given');
 
@@ -12,8 +12,8 @@ module.exports = function (obj, iterator) {
 
 	Object.keys(obj).forEach(function(key) {
 		var mapped = iterator(obj[key], key);
-		if (mapped !== void 0) {
-		  result[key] = mapped;
+		if (mapped !== void 0 || !dropUnmapped) {
+			result[key] = iterator(obj[key], key);
 		}
 	});
 

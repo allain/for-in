@@ -22,13 +22,25 @@ describe('map-in', function() {
 		assert.deepEqual(mapped, ['here', 'here']);
 	});
 
-	it('should drop keys that mapped to undefined', function() {
+	it('should keep keys that mapped to undefined', function() {
 		var obj = {a: 10, b: 20};
 		var mapped = mapIn(obj, function(val, key) {
 			if ('b' === key) return undefined;
 
 		  return val;
 		});
+		assert.deepEqual(mapped, {a: 10, b: undefined});
+	});
+
+	it('should support dropping unmapped with a flag', function() {
+		var obj = {a: 10, b: 20};
+
+		var mapped = mapIn(obj, function(val, key) {
+			if ('b' === key) return undefined;
+
+		  return val;
+		}, true);
+
 		assert.deepEqual(mapped, {a: 10});
 	});
 

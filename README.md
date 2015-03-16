@@ -33,11 +33,4 @@ var doubled = mapIn([1, 2], function(num, key) {
 
 console.log(doubled); // [2, 4]
 
-// Drops keys where the value maps to unefined
-var evens = mapIn([0, 1, 2, 3, 4], function(num) {
-  if (num % 2 === 0) return num;
-});
-
-console.log(evens); // [0, 2, 4]
-
 ```
