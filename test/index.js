@@ -10,7 +10,6 @@ describe('map-in', function() {
     assert.deepEqual(mapIn(true, echo), {});
   });
 
-
 	it('should pass values through the iterator', function() {
 		var obj = {a: 10, b: 20};
 		var mapped = mapIn(obj, function(val, key) { return 'here'; });
